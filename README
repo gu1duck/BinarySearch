@@ -1,0 +1,2 @@
+This program recursively calls a binary search function to find a value within an ordered array of integers. Once it has found the value, it crawls backward and forward through the array to find the first instance of the target and the total number of instances.
+It returns a struct called Range containg the value and the total number of instances.
