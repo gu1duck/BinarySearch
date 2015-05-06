@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
     
     int testNumbers[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 16};
     int testLength = sizeof(testNumbers)/sizeof(testNumbers[0]);
-    int testTarget = 9;
+    int testTarget = 16;
     
     Range final = binarySearch(testNumbers, testTarget, -1, testLength);
     printf("the target starts at index %d and goes for %d index(es).", final.firstInstance, final.numberOfInstances);
@@ -35,7 +35,7 @@ Range binarySearch(int numbers[], int target, int min, int max){
     /* set query value to half of the array length */
     int query = (max + min)/2;
     
-    if (query <= min || query >= max){
+    if (min > max){
         Range failure;
         failure.firstInstance = -1;
         failure.numberOfInstances = 0;
@@ -47,14 +47,14 @@ Range binarySearch(int numbers[], int target, int min, int max){
      reduce the range of the search */
     if (numbers[query] > target)
     {
-        return binarySearch(numbers, target, min, query);
+        return binarySearch(numbers, target, min, --query);
     }
     
     /* If query is too small, set the maximum to the current query to
      reduce the range of the search */
     else if (numbers[query] < target)
     {
-        return binarySearch(numbers, target, query, max);
+        return binarySearch(numbers, target, ++query, max);
     }
     else
     {
