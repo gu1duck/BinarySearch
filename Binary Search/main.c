@@ -22,9 +22,9 @@ int main(int argc, const char * argv[]) {
     
     int testNumbers[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 9, 9, 10, 11, 12, 13, 15, 16};
     int testLength = sizeof(testNumbers)/sizeof(testNumbers[0]);
-    int testTarget = 16;
+    int testTarget = 20;
     
-    Range final = binarySearch(testNumbers, testTarget, -1, testLength);
+    Range final = binarySearch(testNumbers, testTarget, 0, testLength-1);
     printf("the target starts at index %d and goes for %d index(es).", final.firstInstance, final.numberOfInstances);
     
     return 1;
